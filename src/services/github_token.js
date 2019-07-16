@@ -68,7 +68,6 @@ async function getGithubTokenAsync() {
     const { token_type, scope, access_token } = await createTokenWithCode(
       params.code
     );
-
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);
