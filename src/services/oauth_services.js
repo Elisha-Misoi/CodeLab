@@ -2,23 +2,15 @@ import * as React from 'react';
 import { Image, Text, View, AsyncStorage, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import getGithubTokenAsync from './github_token';
-<<<<<<< HEAD
 import getEnvVars from '../../environment';
 const {
-=======
-import {
->>>>>>> [Finishes #167284916] added login page
   FIRBSE_APIKEY,
   FIRBSE_AUTHDOMAIN,
   FIRBSE_DATABASEURL,
   FIRBSE_PROJECTID,
   FIRBSE_STORAGEBUCKET,
   FIRBSE_MESSAGINGSENDERID
-<<<<<<< HEAD
 } = getEnvVars();
-=======
-} from 'react-native-dotenv';
->>>>>>> [Finishes #167284916] added login page
 
 const GithubStorageKey = '@Expo:GithubToken';
 
@@ -49,11 +41,7 @@ export async function signInAsync(token) {
       }
     }
     const credential = firebase.auth.GithubAuthProvider.credential(token);
-<<<<<<< HEAD
     return firebase.auth().signInWithCredential(credential);
-=======
-    return firebase.auth().signInAndRetrieveDataWithCredential(credential);
->>>>>>> [Finishes #167284916] added login page
   } catch ({ message }) {
     alert(message);
   }
@@ -71,10 +59,6 @@ export async function signOutAsync() {
 export async function attemptToRestoreAuthAsync() {
   let token = await AsyncStorage.getItem(GithubStorageKey);
   if (token) {
-<<<<<<< HEAD
-=======
-    console.log('Sign in with token', token);
->>>>>>> [Finishes #167284916] added login page
     return signInAsync(token);
   }
 }

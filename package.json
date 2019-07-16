@@ -10,18 +10,10 @@
   "dependencies": {
     "apollo-boost": "^0.4.3",
     "expo": "^33.0.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "expo-web-browser": "^5.0.3",
     "firebase": "^6.3.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
-=======
-    "firebase": "^6.3.0",
->>>>>>> [Finishes #167284916] added login page
-=======
-    "firebase": "^6.3.0",
->>>>>>> [Finishes #167284916] added login page
     "react": "16.8.3",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
@@ -33,17 +25,7 @@
   "devDependencies": {
     "babel-preset-expo": "^5.1.1",
     "babel-preset-react-native": "^4.0.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "metro-react-native-babel-preset": "^0.55.0"
-=======
-    "metro-react-native-babel-preset": "^0.55.0",
-    "react-native-dotenv": "^0.2.0"
->>>>>>> [Finishes #167284916] added login page
-=======
-    "metro-react-native-babel-preset": "^0.55.0",
-    "react-native-dotenv": "^0.2.0"
->>>>>>> [Finishes #167284916] added login page
   },
   "private": true
 }

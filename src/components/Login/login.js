@@ -18,7 +18,6 @@ import {
 export default class Login extends Component {
   state = { isSignedIn: false };
 
-<<<<<<< HEAD
   static navigationOptions = {
     header: null
   };
@@ -28,10 +27,6 @@ export default class Login extends Component {
     if (this.state.isSignedIn) {
       this.props.navigation.navigate('Home');
     }
-=======
-  componentDidMount() {
-    this.setupFirebaseAsync();
->>>>>>> [Finishes #167284916] added login page
   }
 
   setupFirebaseAsync = async () => {
@@ -42,17 +37,13 @@ export default class Login extends Component {
       this.setState({ isSignedIn });
       if (!isSignedIn) {
         attemptToRestoreAuthAsync();
-<<<<<<< HEAD
       } else {
         this.props.navigation.navigate('Home');
-=======
->>>>>>> [Finishes #167284916] added login page
       }
     });
   };
 
   render() {
-<<<<<<< HEAD
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
@@ -76,44 +67,6 @@ export default class Login extends Component {
         </TouchableOpacity>
       </View>
     );
-=======
-    if (this.state.isSignedIn) {
-      const user = firebase.auth().currentUser || {};
-      return (
-        <View style={styles.profileContainer}>
-          <Image source={{ uri: user.photoURL }} style={styles.image} />
-          <Text style={styles.paragraph}>Welcome {user.displayName}</Text>
-          <Text style={styles.paragraph} onPress={signOutAsync}>
-            Logout
-          </Text>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              source={require('../../assets/images/codelab.png')}
-            />
-          </View>
-
-          <TouchableOpacity
-            onPress={() => signInAsync()}
-            style={styles.touchableOpacity}
-          >
-            <View style={styles.buttonContainer}>
-              <Image
-                style={styles.buttonImage}
-                source={require('../../assets/images/github.png')}
-              />
-              <Text style={styles.text}>Login with GitHub</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      );
-    }
->>>>>>> [Finishes #167284916] added login page
   }
 }
 
