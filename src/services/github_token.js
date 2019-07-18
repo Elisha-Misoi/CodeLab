@@ -1,6 +1,7 @@
 import { AuthSession } from 'expo';
 const REDIRECT_URL = AuthSession.getRedirectUrl();
-import { GITHUB_APP_ID, GITHUB_SECRET } from 'react-native-dotenv';
+import getEnvVars from '../../environment';
+const { GITHUB_APP_ID, GITHUB_SECRET } = getEnvVars();
 
 const github = {
   id: GITHUB_APP_ID,
@@ -51,7 +52,6 @@ async function getGithubTokenAsync() {
     const { type, params } = await AuthSession.startAsync({
       authUrl: authUrlWithId(github.id, githubFields)
     });
-    console.log('getGithubTokenAsync: A: ', { type, params });
     if (type !== 'success') {
       return null;
     }
@@ -69,11 +69,6 @@ async function getGithubTokenAsync() {
     const { token_type, scope, access_token } = await createTokenWithCode(
       params.code
     );
-    console.log('getGithubTokenAsync: B: ', {
-      token_type,
-      scope,
-      access_token
-    });
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);
