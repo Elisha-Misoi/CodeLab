@@ -5,14 +5,19 @@ import {
   Text,
   View,
   FlatList,
+<<<<<<< HEAD
   Platform,
   AsyncStorage
+=======
+  Platform
+>>>>>>> [Finishes #167284918] added home page screen
 } from 'react-native';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ApolloProvider, Query } from 'react-apollo';
 import { usersQuery } from './userquery';
 import ProfileView from './profileView';
 import BusyIndicator from './activityIndicator';
+<<<<<<< HEAD
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { signOutAsync } from '../../services/oauth_services';
 
@@ -38,12 +43,26 @@ logout = async navigation => {
   await signOutAsync();
   navigation.navigate('Login');
 };
+=======
+
+const API_KEY = '5f0bb2bec082a1768b2fd91a3b3fbbac6bf4581f';
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: 'https://api.github.com/graphql',
+    headers: {
+      authorization: `Bearer ${API_KEY}`
+    }
+  }),
+  cache: new InMemoryCache()
+});
+>>>>>>> [Finishes #167284918] added home page screen
 
 export default class Home extends Component {
   static navigationOptions = {
     header: null
   };
 
+<<<<<<< HEAD
   state = {
     client: null
   };
@@ -63,6 +82,11 @@ export default class Home extends Component {
     }
     return (
       <ApolloProvider client={this.state.client}>
+=======
+  render() {
+    return (
+      <ApolloProvider client={client}>
+>>>>>>> [Finishes #167284918] added home page screen
         <View>
           <View style={styles.navBar}>
             <Image
@@ -83,6 +107,7 @@ export default class Home extends Component {
               }}
               source={require('../../assets/images/codelab.png')}
             />
+<<<<<<< HEAD
             <TouchableOpacity onPress={() => logout(this.props.navigation)}>
               <Image
                 style={{
@@ -94,6 +119,17 @@ export default class Home extends Component {
                 source={require('../../assets/images/logout.png')}
               />
             </TouchableOpacity>
+=======
+            <Image
+              style={{
+                width: 30,
+                height: 30,
+                marginTop: Platform.OS === 'ios' ? 40 : 40,
+                marginRight: 10
+              }}
+              source={require('../../assets/images/bell.png')}
+            />
+>>>>>>> [Finishes #167284918] added home page screen
           </View>
           <Query query={usersQuery}>
             {({ data, error, loading }) => {

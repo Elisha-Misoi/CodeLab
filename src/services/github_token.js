@@ -68,7 +68,10 @@ async function getGithubTokenAsync() {
     const { token_type, scope, access_token } = await createTokenWithCode(
       params.code
     );
+<<<<<<< HEAD
 
+=======
+>>>>>>> [Finishes #167284918] added home page screen
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);

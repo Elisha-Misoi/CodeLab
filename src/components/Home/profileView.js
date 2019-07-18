@@ -5,10 +5,14 @@ export default class Home extends Component {
   render() {
     const { item, navigation } = this.props;
     return (
+<<<<<<< HEAD
       <TouchableOpacity
         style={styles.container}
         onPress={() => navigation.navigate('Profile', { item: item })}
       >
+=======
+      <TouchableOpacity style={styles.container}>
+>>>>>>> [Finishes #167284918] added home page screen
         <View style={styles.profileImgContainer}>
           <Image
             style={styles.profileImg}
