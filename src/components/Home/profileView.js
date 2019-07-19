@@ -5,7 +5,10 @@ export default class Home extends Component {
   render() {
     const { item, navigation } = this.props;
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => navigation.navigate('Profile', { item: item })}
+      >
         <View style={styles.profileImgContainer}>
           <Image
             style={styles.profileImg}
