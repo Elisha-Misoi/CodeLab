@@ -11,24 +11,11 @@ import {
 } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
-viewProfile = async link => {
-  await WebBrowser.openBrowserAsync(link);
-};
-
 onShare = async (link, name) => {
   try {
     const result = await Share.share({
       message: `Checkout ${name} GitHub profile: \n\n${link}`
     });
-    if (result.action === Share.sharedAction) {
-      if (result.activityType) {
-        // shared with activity type of result.activityType
-      } else {
-        // shared
-      }
-    } else if (result.action === Share.dismissedAction) {
-      // dismissed
-    }
   } catch (error) {
     alert(error.message);
   }
@@ -66,7 +53,7 @@ export default class Profile extends React.Component {
                 style={styles.iconImage}
                 source={require('../../assets/images/link.png')}
               />
-              <TouchableOpacity onPress={() => viewProfile(item.url)}>
+              <TouchableOpacity>
                 <Text
                   style={styles.link}
                   numberOfLines={1}
