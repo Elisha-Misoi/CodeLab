@@ -55,6 +55,19 @@ async function getGithubTokenAsync() {
     if (type !== 'success') {
       return null;
     }
+<<<<<<< HEAD
+=======
+=======
+    console.log('getGithubTokenAsync: A: ', { type, params });
+    if (type !== 'success') {
+      return null;
+    }
+<<<<<<< HEAD
+
+>>>>>>> [Finishes #167284916] added login page
+=======
+>>>>>>> [Finishes #167284920] added profile page
+>>>>>>> [Finishes #167284920] added profile page
     if (params.error) {
       const { error, error_description, error_uri } = params;
       if (error === 'redirect_uri_mismatch') {
@@ -68,6 +81,22 @@ async function getGithubTokenAsync() {
     const { token_type, scope, access_token } = await createTokenWithCode(
       params.code
     );
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+    console.log('getGithubTokenAsync: B: ', {
+      token_type,
+      scope,
+      access_token
+    });
+>>>>>>> [Finishes #167284916] added login page
+=======
+
+>>>>>>> [Finishes #167284920] added profile page
+>>>>>>> [Finishes #167284920] added profile page
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);
