@@ -65,8 +65,11 @@ async function getGithubTokenAsync() {
     if (type !== 'success') {
       return null;
     }
+<<<<<<< HEAD
 
 >>>>>>> [Finishes #167284916] added login page
+=======
+>>>>>>> [Finishes #167284920] added profile page
     if (params.error) {
       const { error, error_description, error_uri } = params;
       if (error === 'redirect_uri_mismatch') {
@@ -81,6 +84,7 @@ async function getGithubTokenAsync() {
       params.code
     );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     console.log('getGithubTokenAsync: B: ', {
@@ -89,6 +93,9 @@ async function getGithubTokenAsync() {
       access_token
     });
 >>>>>>> [Finishes #167284916] added login page
+=======
+
+>>>>>>> [Finishes #167284920] added profile page
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);
