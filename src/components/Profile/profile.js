@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
+viewProfile = async link => {
+  await WebBrowser.openBrowserAsync(link);
+};
+
 onShare = async (link, name) => {
   try {
     const result = await Share.share({
@@ -53,7 +57,7 @@ export default class Profile extends React.Component {
                 style={styles.iconImage}
                 source={require('../../assets/images/link.png')}
               />
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => viewProfile(item.url)}>
                 <Text
                   style={styles.link}
                   numberOfLines={1}
