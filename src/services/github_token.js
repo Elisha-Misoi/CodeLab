@@ -69,9 +69,13 @@ async function getGithubTokenAsync() {
       params.code
     );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> [Finishes #167284918] added home page screen
+=======
+
+>>>>>>> [Finishes #167284920] added profile page
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);

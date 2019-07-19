@@ -6,11 +6,16 @@ import {
   View,
   FlatList,
 <<<<<<< HEAD
+<<<<<<< HEAD
   Platform,
   AsyncStorage
 =======
   Platform
 >>>>>>> [Finishes #167284918] added home page screen
+=======
+  Platform,
+  AsyncStorage
+>>>>>>> [Finishes #167284920] added profile page
 } from 'react-native';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ApolloProvider, Query } from 'react-apollo';
@@ -45,17 +50,30 @@ logout = async navigation => {
 };
 =======
 
-const API_KEY = '5f0bb2bec082a1768b2fd91a3b3fbbac6bf4581f';
-const client = new ApolloClient({
-  link: new HttpLink({
-    uri: 'https://api.github.com/graphql',
+const initializeApollo = token => {
+  const link = new HttpLink({
+    uri: `https://api.github.com/graphql`,
     headers: {
-      authorization: `Bearer ${API_KEY}`
+      authorization: `Bearer ${token}`
     }
+<<<<<<< HEAD
   }),
   cache: new InMemoryCache()
 });
 >>>>>>> [Finishes #167284918] added home page screen
+=======
+  });
+
+  const cache = new InMemoryCache();
+
+  const client = new ApolloClient({
+    link,
+    cache
+  });
+
+  return client;
+};
+>>>>>>> [Finishes #167284920] added profile page
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -63,19 +81,26 @@ export default class Home extends Component {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [Finishes #167284920] added profile page
   state = {
     client: null
   };
 
   async componentDidMount() {
     let token = await AsyncStorage.getItem('@Expo:GithubToken');
+<<<<<<< HEAD
     console.log('token', token);
+=======
+>>>>>>> [Finishes #167284920] added profile page
     const client = initializeApollo(token);
     this.setState({
       client: client
     });
   }
 
+<<<<<<< HEAD
   render() {
     if (!this.state.client) {
       return <BusyIndicator />;
@@ -83,10 +108,19 @@ export default class Home extends Component {
     return (
       <ApolloProvider client={this.state.client}>
 =======
+=======
+>>>>>>> [Finishes #167284920] added profile page
   render() {
+    if (!this.state.client) {
+      return <BusyIndicator />;
+    }
     return (
+<<<<<<< HEAD
       <ApolloProvider client={client}>
 >>>>>>> [Finishes #167284918] added home page screen
+=======
+      <ApolloProvider client={this.state.client}>
+>>>>>>> [Finishes #167284920] added profile page
         <View>
           <View style={styles.navBar}>
             <Image
