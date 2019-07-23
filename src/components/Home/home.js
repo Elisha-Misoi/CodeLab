@@ -125,19 +125,11 @@ export default class Home extends Component {
           <View style={styles.navBar}>
             <Image
               style={{
-                width: 30,
-                height: 20,
-                marginTop: Platform.OS === 'ios' ? 45 : 45,
-                marginLeft: 10
-              }}
-              source={require('../../assets/images/more.png')}
-            />
-            <Image
-              style={{
                 width: 170,
                 height: 28,
                 marginTop: Platform.OS === 'ios' ? 40 : 40,
-                marginRight: 10
+                marginRight: 10,
+                marginLeft: 5
               }}
               source={require('../../assets/images/codelab.png')}
             />
