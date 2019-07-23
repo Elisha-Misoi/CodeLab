@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   logo: {
-    height: Platform.OS === 'ios' ? 50 : 40,
-    width: 200
+    height: Platform.OS === 'ios' ? 30 : 30,
+    width: 300
   },
   touchableOpacity: {
     height: Platform.OS === 'ios' ? 60 : 52,
