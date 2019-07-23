@@ -25,6 +25,10 @@ onShare = async (link, name) => {
   }
 };
 
+onBackPressed = async navigation => {
+  navigation.goBack(null);
+};
+
 export default class Profile extends React.Component {
   static navigationOptions = {
     header: null
@@ -34,67 +38,81 @@ export default class Profile extends React.Component {
     const item = this.props.navigation.getParam('item', () => {});
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.profileImgContainer}>
+        <View>
+          <TouchableOpacity
+            onPress={() => onBackPressed(this.props.navigation)}
+            style={styles.backBtn}
+          >
             <Image
-              style={styles.profileImg}
-              source={{
-                uri: item.avatarUrl
-              }}
+              style={styles.backImg}
+              source={require('../../assets/images/back.png')}
             />
-          </View>
-          <Text style={styles.name}>{item.name}</Text>
-          <View style={styles.stackLayout}>
-            <View style={styles.info}>
+            <Text style={styles.backText}>Back</Text>
+          </TouchableOpacity>
+          <View style={styles.container}>
+            <View style={styles.profileImgContainer}>
               <Image
-                style={styles.iconImage}
-                source={require('../../assets/images/marker.png')}
+                style={styles.profileImg}
+                source={{
+                  uri: item.avatarUrl
+                }}
               />
-              <Text style={styles.text}>{item.location}</Text>
             </View>
-            <View style={styles.info}>
-              <Image
-                style={styles.iconImage}
-                source={require('../../assets/images/link.png')}
-              />
-              <TouchableOpacity onPress={() => viewProfile(item.url)}>
-                <Text
-                  style={styles.link}
-                  numberOfLines={1}
-                  ellipsizeMode='tail'
-                >
-                  {item.url}
-                </Text>
+            <Text style={styles.name}>{item.name}</Text>
+            <View style={styles.stackLayout}>
+              <View style={styles.info}>
+                <Image
+                  style={styles.iconImage}
+                  source={require('../../assets/images/marker.png')}
+                />
+                <Text style={styles.text}>{item.location}</Text>
+              </View>
+              <View style={styles.info}>
+                <Image
+                  style={styles.iconImage}
+                  source={require('../../assets/images/link.png')}
+                />
+                <TouchableOpacity onPress={() => viewProfile(item.url)}>
+                  <Text
+                    style={styles.link}
+                    numberOfLines={1}
+                    ellipsizeMode='tail'
+                  >
+                    {item.url}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.info}>
+                <Image
+                  style={styles.iconImage}
+                  source={require('../../assets/images/repos.png')}
+                />
+                <View style={styles.info}>
+                  <Text style={styles.text}>Repos: </Text>
+                  <Text style={styles.text}>
+                    {item.repositories.totalCount}
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.info}>
+                <Image
+                  style={styles.iconImage}
+                  source={require('../../assets/images/star.png')}
+                />
+                <View style={styles.info}>
+                  <Text style={styles.text}>Stars: </Text>
+                  <Text style={styles.text}>
+                    {item.starredRepositories.totalCount}
+                  </Text>
+                </View>
+              </View>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => onShare(item.url, item.name)}
+              >
+                <Text style={styles.buttonText}>Share Profile</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.info}>
-              <Image
-                style={styles.iconImage}
-                source={require('../../assets/images/repos.png')}
-              />
-              <View style={styles.info}>
-                <Text style={styles.text}>Repos: </Text>
-                <Text style={styles.text}>{item.repositories.totalCount}</Text>
-              </View>
-            </View>
-            <View style={styles.info}>
-              <Image
-                style={styles.iconImage}
-                source={require('../../assets/images/star.png')}
-              />
-              <View style={styles.info}>
-                <Text style={styles.text}>Stars: </Text>
-                <Text style={styles.text}>
-                  {item.starredRepositories.totalCount}
-                </Text>
-              </View>
-            </View>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => onShare(item.url, item.name)}
-            >
-              <Text style={styles.buttonText}>Share Profile</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -175,5 +193,21 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20
+  },
+  backBtn: {
+    flexDirection: 'row',
+    marginTop: 50,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginLeft: 5
+  },
+  backImg: {
+    height: 30,
+    width: 30
+  },
+  backText: {
+    color: 'black',
+    fontSize: 20,
+    marginTop: 3
   }
 });
