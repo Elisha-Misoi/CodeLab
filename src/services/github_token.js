@@ -1,11 +1,9 @@
 import { AuthSession } from 'expo';
 const REDIRECT_URL = AuthSession.getRedirectUrl();
-import getEnvVars from '../../environment';
-const { GITHUB_APP_ID, GITHUB_SECRET } = getEnvVars();
 
 const github = {
-  id: GITHUB_APP_ID,
-  secret: GITHUB_SECRET
+  id: '8e59ce086f6fdf66bcd4',
+  secret: 'a415d7171690d7c5931481a3de105ea071ce2a35'
 };
 
 const githubFields = [

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "codelab",
+    "name": "ExpoCodeLabTestApp",
     "slug": "codelab",
     "privacy": "public",
     "sdkVersion": "33.0.0",
@@ -22,6 +22,7 @@
     },
     "android": {
       "package": "com.codelab"
-    }
+    },
+    "scheme": "codelab"
   }
 }

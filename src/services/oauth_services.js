@@ -2,25 +2,16 @@ import * as React from 'react';
 import { Image, Text, View, AsyncStorage, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import getGithubTokenAsync from './github_token';
-import getEnvVars from '../../environment';
-const {
-  FIRBSE_APIKEY,
-  FIRBSE_AUTHDOMAIN,
-  FIRBSE_DATABASEURL,
-  FIRBSE_PROJECTID,
-  FIRBSE_STORAGEBUCKET,
-  FIRBSE_MESSAGINGSENDERID
-} = getEnvVars();
 
 const GithubStorageKey = '@Expo:GithubToken';
 
 const firebaseConfig = {
-  apiKey: FIRBSE_APIKEY,
-  authDomain: FIRBSE_AUTHDOMAIN,
-  databaseURL: FIRBSE_DATABASEURL,
-  projectId: FIRBSE_PROJECTID,
-  storageBucket: FIRBSE_STORAGEBUCKET,
-  messagingSenderId: FIRBSE_MESSAGINGSENDERID
+  apiKey: 'AIzaSyARbSvyWepB5hT7g66Y7si6snXt7kZKV1A',
+  authDomain: 'codelab-155a1.firebaseapp.com',
+  databaseURL: 'https://codelab-155a1.firebaseio.com',
+  projectId: 'project-115472164341',
+  storageBucket: 'codelab-155a1.appspot.com',
+  messagingSenderId: '115472164341'
 };
 
 export function initializeFirebase() {

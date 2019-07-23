@@ -125,9 +125,9 @@ export default class Home extends Component {
           <View style={styles.navBar}>
             <Image
               style={{
-                width: 170,
-                height: 28,
-                marginTop: Platform.OS === 'ios' ? 40 : 40,
+                width: 250,
+                height: 20,
+                marginTop: Platform.OS === 'ios' ? 40 : 46,
                 marginRight: 10,
                 marginLeft: 5
               }}
