@@ -5,7 +5,8 @@ import {
   Text,
   View,
   FlatList,
-  Platform
+  Platform,
+  AsyncStorage
 } from 'react-native';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ApolloProvider, Query } from 'react-apollo';
@@ -13,25 +14,47 @@ import { usersQuery } from './userquery';
 import ProfileView from './profileView';
 import BusyIndicator from './activityIndicator';
 
-const API_KEY = '5f0bb2bec082a1768b2fd91a3b3fbbac6bf4581f';
-const client = new ApolloClient({
-  link: new HttpLink({
-    uri: 'https://api.github.com/graphql',
+const initializeApollo = token => {
+  const link = new HttpLink({
+    uri: `https://api.github.com/graphql`,
     headers: {
-      authorization: `Bearer ${API_KEY}`
+      authorization: `Bearer ${token}`
     }
-  }),
-  cache: new InMemoryCache()
-});
+  });
+
+  const cache = new InMemoryCache();
+
+  const client = new ApolloClient({
+    link,
+    cache
+  });
+
+  return client;
+};
 
 export default class Home extends Component {
   static navigationOptions = {
     header: null
   };
 
+  state = {
+    client: null
+  };
+
+  async componentDidMount() {
+    let token = await AsyncStorage.getItem('@Expo:GithubToken');
+    const client = initializeApollo(token);
+    this.setState({
+      client: client
+    });
+  }
+
   render() {
+    if (!this.state.client) {
+      return <BusyIndicator />;
+    }
     return (
-      <ApolloProvider client={client}>
+      <ApolloProvider client={this.state.client}>
         <View>
           <View style={styles.navBar}>
             <Image
