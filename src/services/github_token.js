@@ -1,7 +1,11 @@
 import { AuthSession } from 'expo';
 const REDIRECT_URL = AuthSession.getRedirectUrl();
+<<<<<<< HEAD
 import getEnvVars from '../../environment';
 const { GITHUB_APP_ID, GITHUB_SECRET } = getEnvVars();
+=======
+import { GITHUB_APP_ID, GITHUB_SECRET } from 'react-native-dotenv';
+>>>>>>> [Finishes #167284916] added login page
 
 const github = {
   id: GITHUB_APP_ID,
@@ -52,9 +56,20 @@ async function getGithubTokenAsync() {
     const { type, params } = await AuthSession.startAsync({
       authUrl: authUrlWithId(github.id, githubFields)
     });
+<<<<<<< HEAD
     if (type !== 'success') {
       return null;
     }
+=======
+    console.log('getGithubTokenAsync: A: ', { type, params });
+    if (type !== 'success') {
+      return null;
+    }
+<<<<<<< HEAD
+
+>>>>>>> [Finishes #167284916] added login page
+=======
+>>>>>>> [Finishes #167284920] added profile page
     if (params.error) {
       const { error, error_description, error_uri } = params;
       if (error === 'redirect_uri_mismatch') {
@@ -68,7 +83,19 @@ async function getGithubTokenAsync() {
     const { token_type, scope, access_token } = await createTokenWithCode(
       params.code
     );
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+    console.log('getGithubTokenAsync: B: ', {
+      token_type,
+      scope,
+      access_token
+    });
+>>>>>>> [Finishes #167284916] added login page
+=======
+
+>>>>>>> [Finishes #167284920] added profile page
     return access_token;
   } catch ({ message }) {
     throw new Error(`Github Auth: ${message}`);
