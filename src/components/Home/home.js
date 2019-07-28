@@ -13,6 +13,8 @@ import { ApolloProvider, Query } from 'react-apollo';
 import { usersQuery } from './userquery';
 import ProfileView from './profileView';
 import BusyIndicator from './activityIndicator';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { signOutAsync } from '../../services/oauth_services';
 
 const initializeApollo = token => {
   const link = new HttpLink({
@@ -32,6 +34,11 @@ const initializeApollo = token => {
   return client;
 };
 
+logout = async navigation => {
+  await signOutAsync();
+  navigation.navigate('Login');
+};
+
 export default class Home extends Component {
   static navigationOptions = {
     header: null
@@ -43,6 +50,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     let token = await AsyncStorage.getItem('@Expo:GithubToken');
+    console.log('token', token);
     const client = initializeApollo(token);
     this.setState({
       client: client
@@ -75,15 +83,17 @@ export default class Home extends Component {
               }}
               source={require('../../assets/images/codelab.png')}
             />
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                marginTop: Platform.OS === 'ios' ? 40 : 40,
-                marginRight: 10
-              }}
-              source={require('../../assets/images/bell.png')}
-            />
+            <TouchableOpacity onPress={() => logout(this.props.navigation)}>
+              <Image
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: Platform.OS === 'ios' ? 40 : 40,
+                  marginRight: 10
+                }}
+                source={require('../../assets/images/logout.png')}
+              />
+            </TouchableOpacity>
           </View>
           <Query query={usersQuery}>
             {({ data, error, loading }) => {
